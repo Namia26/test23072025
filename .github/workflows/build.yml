@@ -1,0 +1,34 @@
+name: Build ESP32 Firmware
+
+on:
+  push:
+    branches:
+      - main
+      - '**'  # Optional: build on every branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    - name: Install PlatformIO
+      run: |
+        python -m pip install --upgrade pip
+        pip install platformio
+
+    - name: Run PlatformIO build
+      run: platformio run
+
+    - name: Upload firmware
+      uses: actions/upload-artifact@v4
+      with:
+        name: firmware
+        path: .pio/build/**/firmware.bin
