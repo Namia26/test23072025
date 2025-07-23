@@ -9,7 +9,7 @@ const char *password = "Rec0ve2016";
 const int ledPin = 2; // Built-in LED for many ESP32 boards
 
 // NEW version
-const char *currentVersion = "1.0.1";
+const char *currentVersion = "1.0.0";
 
 // URL to your firmware_info.json
 const char *json_url = "https://raw.githubusercontent.com/Namia26/test23072025/main/firmware_info.json";
@@ -66,7 +66,7 @@ void checkForOTAUpdate()
   if (httpCode == 200)
   {
     String payload = http.getString();
-    StaticJsonDocument<512> doc;
+    JsonDocument doc;
     DeserializationError error = deserializeJson(doc, payload);
 
     if (error)
@@ -117,9 +117,4 @@ void setup()
 
 void loop()
 {
-  // Blink LED every 1 second
-  digitalWrite(ledPin, HIGH);
-  delay(500);
-  digitalWrite(ledPin, LOW);
-  delay(500);
 }
