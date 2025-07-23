@@ -6,12 +6,9 @@
 const char *ssid = "RecoveGroupWifi";
 const char *password = "Rec0ve2016";
 
-const int ledPin = 2; // Built-in LED for many ESP32 boards
+const int ledPin = 2;
 
-// NEW version
-const char *currentVersion = "1.0.0";
-
-// URL to your firmware_info.json
+const char *currentVersion = "1.0.1";
 const char *json_url = "https://raw.githubusercontent.com/Namia26/test23072025/main/firmware_info.json";
 
 void performOTA(const char *binURL)
@@ -102,8 +99,8 @@ void setup()
 {
   Serial.begin(115200);
   pinMode(ledPin, OUTPUT);
-  Serial.println("\n📡 Connecting to Wi-Fi...");
 
+  Serial.println("\n📡 Connecting to Wi-Fi...");
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED)
   {
@@ -117,4 +114,9 @@ void setup()
 
 void loop()
 {
+  // Blink LED to indicate v1.0.1 is running
+  digitalWrite(ledPin, HIGH);
+  delay(500);
+  digitalWrite(ledPin, LOW);
+  delay(500);
 }
