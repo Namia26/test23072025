@@ -19,12 +19,12 @@ void loop()
   Serial.println("LED ON");
 
   // Wait for 1 second
-  delay(1000);
+  delay(250);
 
   // Turn the LED off
   digitalWrite(LED_PIN, LOW);
   Serial.println("LED OFF");
 
   // Wait for 1 second
-  delay(1000);
+  delay(250);
 }
