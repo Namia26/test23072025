@@ -1,21 +1,30 @@
 #include <Arduino.h>
-
-// put function declarations here:
-int myFunction(int, int);
+// Define the LED pin (ESP32 built-in LED is usually on pin 2)
+#define LED_PIN 2
 
 void setup()
 {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  // Initialize the LED pin as an output
+  pinMode(LED_PIN, OUTPUT);
+
+  // Optional: Initialize serial communication for debugging
+  Serial.begin(115200);
+  Serial.println("ESP32 LED Blink Started");
 }
 
 void loop()
 {
-  // put your main code here, to run repeatedly:
-}
+  // Turn the LED on
+  digitalWrite(LED_PIN, HIGH);
+  Serial.println("LED ON");
 
-// put function definitions here:
-int myFunction(int x, int y)
-{
-  return x + y;
+  // Wait for 1 second
+  delay(1000);
+
+  // Turn the LED off
+  digitalWrite(LED_PIN, LOW);
+  Serial.println("LED OFF");
+
+  // Wait for 1 second
+  delay(1000);
 }
